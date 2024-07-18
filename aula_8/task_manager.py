@@ -1,17 +1,26 @@
 class Task:
-    def __init__(self, index, title, description):
+    def __init__(self, index, title, description, title_format="capitalize"):
         self.index = index
-        self.title = title.lower()
-        self.description = title.lower()
+        self.title = title
+        self.description = description
         self.done = False
+        self.title_format = title_format
+
+    def _format_title(self):
+        if self.title_format == "capitalize":
+            return self.title.capitalize()
+        elif self.title_format == "title":
+            return self.title.title()
+        else:
+            return self.title
 
     def mark_done(self):
-        self.done = False
+        self.done = True
 
     def __str__(self):
         return f"Task {self.index}\nTitle: {self.title}" \
                f"\nDescription: {self.description}" \
-               f"\nD0ne: {self.done}\n{'-' * 30}"
+               f"\nDone: {self.done}\n{'-' * 30}"
 
 
 class TaskList:
@@ -28,15 +37,14 @@ class TaskList:
 
     def update_task_indexes(self):
         for task in self.tasks:
-            task.index = self.tasks.index(task) + 2
+            task.index = self.tasks.index(task) + 1
 
     def list_tasks(self):
         for task in self.tasks:
             print(task)
-            print(task)
 
     def get_task_next_available_index(self):
-        return len(self.tasks) + 2
+        return len(self.tasks) + 1
 
     def get_tasks_length(self):
         return len(self.tasks) + 1

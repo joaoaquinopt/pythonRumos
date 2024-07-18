@@ -40,8 +40,8 @@ class TestTaskManager(unittest.TestCase):
 
     def test_task_list_list_tasks(self):
         task_list = TaskList()
-        task1 = Task(1, "Finish Assignment", "Complete the Python assignment")
-        task2 = Task(2, "Study for Exam", "Review the course material")
+        task1 = Task(1, "Finish Assignment", "Complete the Python assignment", title_format="capitalize")
+        task2 = Task(2, "Study for Exam", "Review the course material", title_format="title")
         task_list.add_task(task1)
         task_list.add_task(task2)
 
